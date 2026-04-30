@@ -1,4 +1,3 @@
-// Wordle Game JavaScript
 
 const WORD_LIST = [
 'above', 'about', 'again', 'alarm', 'apple', 'actor', 'adult', 'after', 'angel', 'angry', 'answer', 'apply', 'agree', 'ahead', 'allow',
@@ -28,7 +27,7 @@ const WORD_LIST = [
 'gains', 'game', 'garden', 'gather', 'gauge', 'general', 'gentle', 'giant', 'gift', 'given', 'glass', 'globe', 'glory', 'glove', 'going',
 'gold', 'grace', 'grade', 'grand', 'grant', 'grape', 'grass', 'grave', 'great', 'green', 'grief', 'grind', 'group', 'grow', 'guard',
 'guest', 'guide', 'guilt', 'guitar', 'given', 'going', 'gold', 'great', 'green', 'group', 'grow', 'guide', 'giant', 'gift', 'glass',
-'grace', 'grade', 'grass', 'grape', 'grand', 'gamer'
+'grace', 'grade', 'grass', 'grape', 'grand', 'gamer',
 'habit', 'hairy', 'hands', 'handy', 'happy', 'hardy', 'haste', 'hatch', 'haven', 'hazel', 'heart', 'heavy',
 'hello', 'hills', 'hinge', 'hobby', 'hoist', 'honey', 'honor', 'horse', 'hotel', 'house', 'human', 'humor',
  'hurry', 'hover', 'holds', 'hoops', 'homes', 'hoped', 'hoped', 'happy', 'heavy', 'hello', 'heart', 'house', 
@@ -39,7 +38,7 @@ const WORD_LIST = [
   'irate', 'icing', 'idiom', 'igloo', 'incur', 'islet', 'idled', 'idler', 'irony', 'image', 'input', 'inner',
   'jacket', 'jaggy', 'jaunt', 'jelly', 'jerky', 'jetty', 'jewel', 'jiffy', 'jived', 'jives', 'joint', 'joist',
    'joker', 'jolly', 'jolts', 'joule', 'joust', 'joyed', 'judge', 'juice', 'juicy', 'jumbo', 'jumps', 'jumpy',
-    'junta', 'juror', 'justs', 'jests', 'jails', 'jaded', 'jacks', 'jeans', 'jeers', 'jello', 'jests', 'jibes', 'jived', 'jiver', 'joins', 'joked', 'jokes',\
+    'junta', 'juror', 'justs', 'jests', 'jails', 'jaded', 'jacks', 'jeans', 'jeers', 'jello', 'jests', 'jibes', 'jived', 'jiver', 'joins', 'joked', 'jokes',
    'jokey', 'jolts', 'junky', 'junks', 'jural', 'jural', 'jests', 'jumpy'
 
 
