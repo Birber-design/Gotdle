@@ -1,259 +1,70 @@
-
-const WORD_LIST = [
-'above', 'about', 'again', 'alarm', 'apple', 'actor', 'adult', 'after', 'angel', 'angry', 'answer', 'apply', 'agree', 'ahead', 'allow',
- 'alone', 'along', 'aloud', 'amaze', 'among', 'angle', 'arena', 'argue', 'arise', 'aside', 'asset', 'avoid', 'awake', 'award', 'aware',
- 'awful', 'ahead', 'alarm', 'album', 'alike', 'alive', 'allow', 'alter', 'adapt',
- 'adopt', 'admit', 'agent', 'agree', 'apple', 'arrow', 'aside', 'awake', 'about', 'above',
- 'basic', 'beach', 'beard', 'beast', 'begin', 'being', 'below', 'bench', 'berry', 'birth', 'black', 'blame', 'blank', 'blast', 
- 'blend', 'bless', 'blind', 'blink', 'block', 'blood', 'bloom', 'blown', 'board', 'boast', 'bonus', 'boost', 'bored', 'bound', 
- 'brain', 'brake', 'brand', 'brass', 'bread', 'break', 'brick', 'bride',
-  'brief', 'bring', 'broad', 'brown', 'build', 'built', 'buyer', 'bunch', 'burst', 'bacon', 'baker', 'books', 'boats', 'belly',
-  'cabin', 'cable', 'candy', 'carry', 'catch', 'cause', 'chain', 'chair', 'chalk', 'charm', 'cheap', 'check', 'chest', 'child',
-'chill', 'china', 'choir', 'choke', 'chose', 'claim', 'class', 'clean', 'clear', 'clerk', 'click', 'climb', 'clock', 'close',
-'cloth', 'cloud', 'coach', 'coast', 'color', 'count', 'court', 'cover', 'craft', 'crash', 'cream', 'creek', 'crime', 'crisp',
-'cross', 'crowd', 'crown', 'crush', 'cubic', 'cured', 'curve', 'cycle', 'carry', 'catch',
-'daily', 'dance', 'dairy', 'damage', 'danger', 'daring', 'dark', 'data', 'date', 'dawn', 'dead', 'deal', 'dear', 'death', 
-'decent', 'decide', 'deep', 'delay',  'demand', 'dense', 'desire', 'detail', 'device', 'devil', 'dialog', 'diamond', 
-'dinner', 'direct', 'dirt', 'dirty', 'disco', 'discuss', 'disease', 'dish', 'dismay', 'dollar', 'domain', 'donor', 'double',
-'doubt', 'draft', 'drama', 'dream', 'dress', 'drink', 'drive', 'drill', 'drama', 'dried',
-'eagle', 'early', 'earth', 'easy', 'eager', 'email', 'empty', 'enemy', 'enter', 'equal', 'error', 'event', 'every', 'exact',
-'exist', 'extra', 'edge', 'elder', 'elite', 'elbow', 'elect', 'endow', 'enjoy', 'enter', 'entry', 'equal', 'erase', 'error',
-'essay', 'event', 'every', 'exact', 'exist', 'extra', 'eager', 'early', 'earth', 'empty', 'enemy', 'enjoy', 'enter', 'equal',
-'event', 'error', 'every', 'exact', 'elite', 'elbow', 'email', 'empty',
-'faith', 'false', 'fancy', 'farms', 'fatal', 'fault', 'favor', 'feast', 'fever', 'field', 'fight', 'final', 'first', 'flash', 'fleet',
-'flame', 'flask', 'floor', 'flour', 'focus', 'force', 'forum', 'found', 'frame', 'fresh', 'front', 'fruit', 'funny', 'fully', 'future',
-'fifty', 'forty', 'frost', 'fever', 'fiber', 'field', 'final', 'first', 'flash', 'floor', 'focus', 'force', 'fresh', 'front', 'fruit',
-'funny', 'favor', 'faith',
-'gains', 'game', 'garden', 'gather', 'gauge', 'general', 'gentle', 'giant', 'gift', 'given', 'glass', 'globe', 'glory', 'glove', 'going',
-'gold', 'grace', 'grade', 'grand', 'grant', 'grape', 'grass', 'grave', 'great', 'green', 'grief', 'grind', 'group', 'grow', 'guard',
-'guest', 'guide', 'guilt', 'guitar', 'given', 'going', 'gold', 'great', 'green', 'group', 'grow', 'guide', 'giant', 'gift', 'glass',
-'grace', 'grade', 'grass', 'grape', 'grand', 'gamer',
-'habit', 'hairy', 'hands', 'handy', 'happy', 'hardy', 'haste', 'hatch', 'haven', 'hazel', 'heart', 'heavy',
-'hello', 'hills', 'hinge', 'hobby', 'hoist', 'honey', 'honor', 'horse', 'hotel', 'house', 'human', 'humor',
- 'hurry', 'hover', 'holds', 'hoops', 'homes', 'hoped', 'hoped', 'happy', 'heavy', 'hello', 'heart', 'house', 
-'human', 'horse', 'hotel', 'honey', 'honor', 'hands', 'handy', 'hills', 'hobby',
-'hoist', 'hurry', 'hover', 'hatch', 'haven',
-'ideal', 'ideas', 'image', 'imply', 'index', 'inner', 'input', 'issue', 'inbox', 'incur', 'inlet', 'irate', 'irony', 'islet', 'icing', 'igloo',
- 'image', 'input', 'inner', 'index', 'issue', 'irony', 'ideal', 'ideas', 'image', 'imply', 'index', 'inner', 'input', 'issue', 'inbox', 'inlet',
-  'irate', 'icing', 'idiom', 'igloo', 'incur', 'islet', 'idled', 'idler', 'irony', 'image', 'input', 'inner',
-  'jacket', 'jaggy', 'jaunt', 'jelly', 'jerky', 'jetty', 'jewel', 'jiffy', 'jived', 'jives', 'joint', 'joist',
-   'joker', 'jolly', 'jolts', 'joule', 'joust', 'joyed', 'judge', 'juice', 'juicy', 'jumbo', 'jumps', 'jumpy',
-    'junta', 'juror', 'justs', 'jests', 'jails', 'jaded', 'jacks', 'jeans', 'jeers', 'jello', 'jests', 'jibes', 'jived', 'jiver', 'joins', 'joked', 'jokes',
-   'jokey', 'jolts', 'junky', 'junks', 'jural', 'jural', 'jests', 'jumpy'
+// script.js
 
 
+// Creates an object that stores all climber information
+const climbers = {
 
+   adam: {
+        name: "Adam Ondra", // Climbers name
+        info: "Adam Ondra is one of the greatest climbers in the world. He is from the Czech Republic and is known for being extremely strong in both sport climbing and bouldering. Many people consider him one of the best all-around climbers in history because he has pushed the limits of what is possible in climbing. He became famous for climbing some of the hardest routes ever done in the world. Adam is also known for his intense focus and powerful style. When he climbs, he often looks very serious because he is thinking carefully about every move. He has completed climbs that almost nobody else has been able to finish, including some of the most difficult rock routes ever created. Adam also competed in the Olympics, representing climbing on a global stage. Even though he is already at the top level, he continues to train hard and try new challenges. Many young climbers look up to him because of his dedication, strength, and love for the sport."
+      },
 
+      mejdi: {
+        name: "Mejdi Schalck",
+        info: "Mejdi Schalck is a talented climber from France who is known for his speed, power, and exciting climbing style. He became famous in competition bouldering because of how quickly he can solve difficult climbing problems. Mejdi is one of the strongest young climbers in the world and has competed against many top athletes in international climbing competitions. People enjoy watching Mejdi climb because he moves very fast and takes big risks on difficult routes. He is especially good at dynamic moves, where climbers jump or move quickly between holds. His energy and confidence make him exciting to watch during competitions. Mejdi trains very hard and continues improving every year, becoming one of the rising stars in modern climbing and bouldering."
+      },
 
+      alex: {
+        name: "Alex Honnold",
+        info: "Alex Honnold is one of the most famous climbers in the world. He is known for free solo climbing, which means climbing without ropes or safety equipment. One of his biggest achievements was climbing the giant cliff El Capitan in Yosemite National Park completely alone without any protection. This climb was shown in the famous movie Free Solo. The movie became very popular because people were shocked by how dangerous the climb was         Alex is known for staying very calm and focused even in scary situations high above the ground. Many people say he has almost no fear. He also climbed famous buildings and walls around the world, including Taipei 101 in Taiwan during a live event. Climbers admire him because of his strength, balance, smart climbing skills, and bravery. Besides climbing, he also helps charities and raises awareness about environmental issues."
 
-];
+      },
 
-let targetWord = '';
-let currentRow = 0;
-let currentCol = 0;
-let gameOver = false;
-let grid = [];
-let keyboardState = {};
+      janja: {
+        name: "Janja Garnbret",
+        info: "Janja Garnbret is one of the best female climbers in the world. She is from Slovenia and became famous because of her amazing strength, balance, and climbing skills. Janja is especially known for competition climbing and bouldering, where she has won many world championships and international competitions. She also won a gold medal in the Olympics, making her one of the biggest stars in climbing history. Many people admire Janja because she climbs very smoothly and makes difficult routes look easy. She is known for her strong mindset, confidence, and hard work during training. Even when climbs are extremely difficult, she stays calm and focused. Janja has inspired many young climbers around the world, especially girls who want to start climbing. Besides competitions, she also enjoys outdoor climbing and continues to push the limits of the sport."
+        },
 
-const gridElement = document.getElementById('grid');
-const keyboardElement = document.getElementById('keyboard');
-const messageElement = document.getElementById('message');
-const resetBtn = document.getElementById('reset-btn');
+      magnus: {
+        name: "Magnus Midtbø",
+        info: "Magnus Midtbø is a famous climber from Norway. He is known for his incredible strength, powerful climbing style, and fun personality. Magnus started climbing when he was young and later became one of the best competitive climbers in Europe. He won many climbing competitions and became respected for his strong grip and athletic skills. Today, Magnus is also very popular on YouTube, where he makes videos about climbing, training, challenges, and adventures with other athletes and famous climbers. Many people enjoy watching his videos because they are exciting, funny, and show how difficult climbing can be. Magnus is known for trying crazy climbing challenges and testing his strength in different sports. He has inspired many people to start climbing and stay active. Even after leaving professional competitions, he continues to be one of the most famous climbers on the internet."
 
-// Initialize the game
-function initGame() {
-    targetWord = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)];
-    currentRow = 0;
-    currentCol = 0;
-    gameOver = false;
-    keyboardState = {};
-    
-    // Create grid
-    gridElement.innerHTML = '';
-    grid = [];
-    for (let i = 0; i < 6; i++) {
-        const row = [];
-        const rowElement = document.createElement('div');
-        rowElement.className = 'row';
-        for (let j = 0; j < 5; j++) {
-            const tile = document.createElement('div');
-            tile.className = 'tile';
-            rowElement.appendChild(tile);
-            row.push(tile);
-        }
-        gridElement.appendChild(rowElement);
-        grid.push(row);
     }
-    
-    // Create keyboard
-    createKeyboard();
-    
-    messageElement.textContent = '';
-    console.log('Target word:', targetWord); // For debugging
+};
+
+
+// Function that opens popup and shows climber information
+function showInfo(climber) {
+
+    // Changes popup title text
+    document.getElementById("popup-title").innerText = climbers[climber].name;
+
+    // Changes popup paragraph text
+    document.getElementById("popup-text").innerText = climbers[climber].info;
+
+    // Makes popup visible
+    document.getElementById("popup").style.display = "flex";
 }
 
-// Create virtual keyboard
-function createKeyboard() {
-    keyboardElement.innerHTML = '';
-    const keyboardLayout = [
-        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-        ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'BACKSPACE']
-    ];
-    
-    keyboardLayout.forEach(row => {
-        const rowElement = document.createElement('div');
-        rowElement.className = 'keyboard-row';
-        
-        row.forEach(key => {
-            const keyElement = document.createElement('button');
-            keyElement.className = 'key';
-            keyElement.textContent = key;
-            if (key === 'ENTER' || key === 'BACKSPACE') {
-                keyElement.classList.add('wide');
-            }
-            keyElement.addEventListener('click', () => handleKeyPress(key));
-            rowElement.appendChild(keyElement);
-        });
-        
-        keyboardElement.appendChild(rowElement);
-    });
+
+// Function that closes popup
+function closePopup() {
+
+    // Hides popup
+    document.getElementById("popup").style.display = "none";
 }
 
-// Handle key press
-function handleKeyPress(key) {
-    if (gameOver) return;
-    
-    if (key === 'ENTER') {
-        submitGuess();
-    } else if (key === 'BACKSPACE') {
-        deleteLetter();
-    } else if (key.length === 1 && key.match(/[A-Z]/)) {
-        addLetter(key);
-    }
-}
 
-// Add letter to current position
-function addLetter(letter) {
-    if (currentCol < 5) {
-        grid[currentRow][currentCol].textContent = letter;
-        grid[currentRow][currentCol].classList.add('filled');
-        currentCol++;
-    }
-}
+// Allows popup to close when clicking outside popup box
+window.onclick = function(event) {
 
-// Delete letter from current position
-function deleteLetter() {
-    if (currentCol > 0) {
-        currentCol--;
-        grid[currentRow][currentCol].textContent = '';
-        grid[currentRow][currentCol].classList.remove('filled');
-    }
-}
+    // Stores popup background element
+    const popup = document.getElementById("popup");
 
-// Submit current guess
-function submitGuess() {
-    if (currentCol !== 5) {
-        showMessage('Not enough letters');
-        return;
-    }
-    
-    const guess = grid[currentRow].map(tile => tile.textContent).join('');
-    
-    if (!WORD_LIST.includes(guess)) {
-        showMessage('Not in word list');
-        return;
-    }
-    
-    // Check the guess
-    const result = checkGuess(guess);
-    
-    // Update tile colors
-    for (let i = 0; i < 5; i++) {
-        const tile = grid[currentRow][i];
-        tile.classList.add(result[i]);
-        
-        // Update keyboard state
-        const letter = guess[i];
-        if (!keyboardState[letter] || result[i] === 'correct') {
-            keyboardState[letter] = result[i];
-        } else if (keyboardState[letter] === 'absent' && result[i] === 'present') {
-            keyboardState[letter] = 'present';
-        }
-    }
-    
-    updateKeyboard();
-    
-    // Check win/lose
-    if (result.every(status => status === 'correct')) {
-        gameOver = true;
-        showMessage('Congratulations! You won!');
-    } else if (currentRow === 5) {
-        gameOver = true;
-        showMessage(`Game over! The word was ${targetWord}`);
-    } else {
-        currentRow++;
-        currentCol = 0;
-    }
-}
+    // Checks if user clicked on popup background
+    if (event.target === popup) {
 
-// Check guess against target word
-function checkGuess(guess) {
-    const result = Array(5).fill('absent');
-    const targetLetters = targetWord.split('');
-    const guessLetters = guess.split('');
-    
-    // First pass: mark correct positions
-    for (let i = 0; i < 5; i++) {
-        if (guessLetters[i] === targetLetters[i]) {
-            result[i] = 'correct';
-            targetLetters[i] = null;
-            guessLetters[i] = null;
-        }
+        // Hides popup
+        popup.style.display = "none";
     }
-    
-    // Second pass: mark present letters
-    for (let i = 0; i < 5; i++) {
-        if (guessLetters[i] && targetLetters.includes(guessLetters[i])) {
-            result[i] = 'present';
-            targetLetters[targetLetters.indexOf(guessLetters[i])] = null;
-        }
-    }
-    
-    return result;
-}
-
-// Update keyboard colors
-function updateKeyboard() {
-    const keys = document.querySelectorAll('.key');
-    keys.forEach(key => {
-        const letter = key.textContent;
-        if (keyboardState[letter]) {
-            key.className = 'key ' + keyboardState[letter];
-        }
-    });
-}
-
-// Show message
-function showMessage(text) {
-    messageElement.textContent = text;
-    setTimeout(() => {
-        messageElement.textContent = '';
-    }, 2000);
-}
-
-// Event listeners
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        handleKeyPress('ENTER');
-    } else if (e.key === 'Backspace') {
-        handleKeyPress('BACKSPACE');
-    } else if (e.key.match(/^[a-zA-Z]$/)) {
-        handleKeyPress(e.key.toUpperCase());
-    }
-});
-
-resetBtn.addEventListener('click', initGame);
-
-// Start the game
-initGame();
+};

@@ -1,160 +1,123 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* style.css */
 
+
+/* Styles the whole website body */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121213;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+    margin: 0; /* Removes default spacing around page */
+    padding: 0; /* Removes default inner spacing */
+    font-family: Arial, sans-serif; /* Changes text font */
+    background-color: #111; /* Dark background color */
+    color: white; /* Makes text white */
+    text-align: center; /* Centers all text */
 }
 
-.game-container {
-    max-width: 500px;
-    width: 100%;
-}
 
+/* Main title styling */
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
+    margin-top: 20px; /* Adds space above title */
+    font-size: 45px; /* Makes title large */
+    letter-spacing: 2px; /* Adds spacing between letters */
 }
 
-.message {
-    text-align: center;
-    margin-bottom: 20px;
-    min-height: 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
+
+/* Container holding all climber cards */
+.container {
+    display: flex; /* Places cards next to each other */
+    justify-content: center; /* Centers cards horizontally */
+    flex-wrap: wrap; /* Moves cards to next line if needed */
+    gap: 25px; /* Space between cards */
+    padding: 30px; /* Space inside container */
 }
 
-.grid {
-    display: grid;
-    grid-template-rows: repeat(6, 1fr);
-    gap: 5px;
-    margin-bottom: 30px;
+
+/* Individual climber card */
+.card {
+    width: 230px; /* Card width */
+    background-color: #222; /* Dark gray background */
+    border-radius: 15px; /* Rounded corners */
+    overflow: hidden; /* Hides overflow content */
+    cursor: pointer; /* Shows pointer when hovering */
+    transition: 0.3s; /* Smooth animation effect */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Adds shadow */
 }
 
-.row {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05); /* Makes card slightly bigger */
+    background-color: #333; /* Changes background color */
 }
 
-.tile {
-    width: 100%;
-    aspect-ratio: 1;
-    border: 2px solid #3a3a3c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: #121213;
-    color: white;
-    transition: all 0.2s ease;
+
+/* Climbers images */
+.card img {
+    width: 100%; /* Makes image fill card width */
+    height: 260px; /* Fixed image height */
+    object-fit: cover; /* Crops image nicely */
 }
 
-.tile.filled {
-    border-color: #565758;
+
+/* Name inside card */
+.card h2 {
+    margin: 15px 0; /* Space above and below text */
+    font-size: 24px; /* Text size */
 }
 
-.tile.correct {
-    background-color: #538d4e;
-    border-color: #538d4e;
+
+/* Popup background overlay */
+.popup {
+    display: none; /* Hidden at start */
+    position: fixed; /* Stays in same position */
+    top: 0; /* Starts from top */
+    left: 0; /* Starts from left */
+    width: 100%; /* Full screen width */
+    height: 100%; /* Full screen height */
+    background-color: rgba(0,0,0,0.8); /* Dark transparent background */
+    justify-content: center; /* Centers popup horizontally */
+    align-items: center; /* Centers popup vertically */
 }
 
-.tile.present {
-    background-color: #b59f3b;
-    border-color: #b59f3b;
+
+/* Popup content box */
+.popup-content {
+    background-color: #222; /* Dark background */
+    width: 70%; /* Popup width */
+    max-width: 600px; /* Maximum popup width */
+    padding: 30px; /* Space inside popup */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 0 15px black; /* Shadow around popup */
 }
 
-.tile.absent {
-    background-color: #3a3a3c;
-    border-color: #3a3a3c;
+
+/* Popup title */
+.popup-content h2 {
+    font-size: 35px; /* Large title text */
+    margin-bottom: 20px; /* Space below title */
 }
 
-.keyboard {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 8px;
-    margin-bottom: 20px;
+
+/* Popup paragraph */
+.popup-content p {
+    font-size: 18px; /* Text size */
+    line-height: 1.6; /* Space between text lines */
 }
 
-.keyboard-row {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
+
+/* Close button styling */
+.close-btn {
+    margin-top: 20px; /* Space above button */
+    padding: 12px 25px; /* Button size */
+    border: none; /* Removes border */
+    border-radius: 10px; /* Rounded button corners */
+    background-color: red; /* Red background */
+    color: white; /* White text */
+    font-size: 16px; /* Text size */
+    cursor: pointer; /* Pointer on hover */
+    transition: 0.3s; /* Smooth animation */
 }
 
-.key {
-    padding: 12px 8px;
-    border: none;
-    border-radius: 4px;
-    background-color: #818384;
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.1s ease;
-    min-width: 40px;
-    text-align: center;
-}
 
-.key:hover {
-    background-color: #a0a1a3;
-}
-
-.key.correct {
-    background-color: #538d4e;
-}
-
-.key.present {
-    background-color: #b59f3b;
-}
-
-.key.absent {
-    background-color: #3a3a3c;
-}
-
-.key.wide {
-    flex: 1.5;
-}
-
-.reset-btn {
-    display: block;
-    margin: 0 auto;
-    padding: 12px 24px;
-    background-color: #538d4e;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.reset-btn:hover {
-    background-color: #4a7c45;
-}
-
-@media (max-width: 600px) {
-    .tile {
-        font-size: 1.5rem;
-    }
-    
-    .key {
-        padding: 10px 6px;
-        font-size: 0.9rem;
-        min-width: 35px;
-    }
+/* Close button hover effect */
+.close-btn:hover {
+    background-color: darkred; /* Darker red on hover */
 }
