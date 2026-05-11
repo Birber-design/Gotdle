@@ -13,9 +13,47 @@
     body {
       margin: 0; /* Removes default page spacing */
       font-family: Arial, sans-serif; /* Sets font */
-      background: #111; /* Dark background */
+      background: #2a2a2a; /* Dark gray background */
       color: white; /* White text */
       text-align: center; /* Centers text */
+      position: relative; /* For particle positioning */
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    /* Particle styles */
+    .particle {
+      position: fixed; /* Fixed positioning */
+      pointer-events: none; /* Don't interfere with clicks */
+      top: 0; /* Start from top */
+      left: 0; /* Start from left */
+    }
+
+    /* Particle animation */
+    @keyframes float {
+      0% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Particle glow animation */
+    @keyframes glow {
+      0%, 100% {
+        box-shadow: 0 0 5px rgba(218, 165, 32, 0.3);
+      }
+      50% {
+        box-shadow: 0 0 15px rgba(218, 165, 32, 0.6);
+      }
     }
 
     /* Main title styling */
@@ -93,6 +131,148 @@
       margin-top: 20px; /* Space above button */
     }
 
+    /* Quiz container */
+    .quiz-container {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stays in place */
+      top: 0; /* Top of page */
+      left: 0; /* Left of page */
+      width: 100%; /* Full screen width */
+      height: 100%; /* Full screen height */
+      background: linear-gradient(135deg, #3d3d1f 0%, #4a4a2a 100%); /* Dark gold gradient */
+      justify-content: center; /* Centers quiz horizontally */
+      align-items: center; /* Centers quiz vertically */
+      z-index: 1000; /* Makes sure it's on top */
+    }
+
+    /* Quiz content box */
+    .quiz-content {
+      background: #2a2a1a; /* Dark gold background */
+      padding: 30px; /* Space inside popup */
+      border-radius: 15px; /* Rounded corners */
+      width: 80%; /* Popup width */
+      max-width: 700px; /* Maximum popup width */
+      max-height: 80vh; /* Maximum height */
+      overflow-y: auto; /* Scroll if needed */
+    }
+
+    /* Quiz button */
+    .quiz-btn {
+      background: #1f1f1f; /* Dark blue button */
+      border: 2px solid white; /* White border */
+      color: white; /* White text */
+      padding: 10px 20px; /* Button size */
+      cursor: pointer; /* Pointer on hover */
+      border-radius: 10px; /* Rounded button */
+      font-size: 14px; /* Text size */
+      transition: 0.3s; /* Smooth animation */
+    }
+
+    /* Quiz button hover */
+    .quiz-btn:hover {
+      background: #333; /* Lighter on hover */
+      transform: scale(1.05); /* Slightly larger */
+    }
+
+    /* Answer option */
+    .answer-option {
+      background: #333; /* Dark background */
+      border: 2px solid #555; /* Gray border */
+      color: white; /* White text */
+      padding: 15px; /* Padding inside */
+      cursor: pointer; /* Pointer on hover */
+      border-radius: 8px; /* Rounded corners */
+      text-align: left; /* Left align text */
+      transition: 0.3s; /* Smooth animation */
+    }
+
+    /* Answer hover */
+    .answer-option:hover {
+      background: #444; /* Lighter on hover */
+      border-color: #888; /* Lighter border */
+      transform: scale(1.02); /* Slightly larger */
+    }
+
+    /* Answer selected */
+    .answer-option.selected {
+      background: #0066cc; /* Blue when selected */
+      border-color: #0099ff; /* Light blue border */
+    }
+
+    /* Picture option */
+    .picture-option {
+      position: relative; /* For image positioning */
+      cursor: pointer; /* Pointer on hover */
+      border: 3px solid #555; /* Gray border */
+      border-radius: 10px; /* Rounded corners */
+      overflow: hidden; /* Hide overflow */
+      transition: 0.3s; /* Smooth animation */
+    }
+
+    /* Picture hover */
+    .picture-option:hover {
+      border-color: #888; /* Lighter border */
+      transform: scale(1.05); /* Slightly larger */
+    }
+
+    /* Picture selected */
+    .picture-option.selected {
+      border-color: #0099ff; /* Light blue border when selected */
+      box-shadow: 0 0 10px #0099ff; /* Glowing effect */
+    }
+
+    /* Picture image */
+    .picture-option img {
+      width: 100%; /* Full width */
+      height: 150px; /* Fixed height */
+      object-fit: cover; /* Crop nicely */
+      display: block; /* Remove spacing */
+    }
+
+    /* Results container */
+    .results-container {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stays in place */
+      top: 0; /* Top of page */
+      left: 0; /* Left of page */
+      width: 100%; /* Full screen width */
+      height: 100%; /* Full screen height */
+      background: linear-gradient(135deg, #3d3d1f 0%, #4a4a2a 100%); /* Dark gold gradient */
+      justify-content: center; /* Centers content horizontally */
+      align-items: center; /* Centers content vertically */
+      z-index: 1000; /* Makes sure it's on top */
+    }
+
+    /* Results content box */
+    .results-content {
+      background: #2a2a1a; /* Dark gold background */
+      padding: 30px; /* Space inside */
+      border-radius: 15px; /* Rounded corners */
+      width: 80%; /* Width */
+      max-width: 700px; /* Maximum width */
+      max-height: 80vh; /* Maximum height */
+      overflow-y: auto; /* Scroll if needed */
+    }
+
+    /* Review item */
+    .review-item {
+      background: #333; /* Dark background */
+      padding: 15px; /* Padding inside */
+      margin: 10px 0; /* Space between items */
+      border-radius: 8px; /* Rounded corners */
+      border-left: 4px solid #888; /* Left border */
+    }
+
+    /* Review correct */
+    .review-item.correct {
+      border-left-color: #4CAF50; /* Green for correct */
+    }
+
+    /* Review incorrect */
+    .review-item.incorrect {
+      border-left-color: #f44336; /* Red for incorrect */
+    }
+
   </style> <!-- Ends CSS -->
 
 </head>
@@ -144,13 +324,50 @@
 
       <p id="popup-text"></p> <!-- Info text filled by JavaScript -->
 
-      <button class="close-btn" onclick="closePopup()">Close</button> <!-- Closes popup -->
+      <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+        <button class="close-btn" onclick="closePopup()">Close</button> <!-- Closes popup -->
+        <button class="close-btn" style="background: #4CAF50;" id="quiz-btn" onclick="startQuiz()">Quiz</button> <!-- Opens quiz -->
+      </div>
 
     </div>
 
   </div>
 
+  <!-- Quiz Page -->
+  <div class="quiz-container" id="quiz-container">
+    <div class="quiz-content">
+      <h2 id="quiz-title">Quiz</h2>
+      <p id="question-number"></p>
+      <div id="question-container"></div>
+      <div id="answers-container" style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;"></div>
+      <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+        <button class="quiz-btn" onclick="previousQuestion()">Previous</button>
+        <button class="quiz-btn" onclick="nextQuestion()">Next</button>
+        <button class="quiz-btn" style="background: #4CAF50;" onclick="finishQuiz()">Finish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz Results Page -->
+  <div class="results-container" id="results-container">
+    <div class="results-content">
+      <h2>Quiz Results</h2>
+      <p id="score-display" style="font-size: 24px; margin: 20px 0;"></p>
+      <div id="review-container" style="max-height: 400px; overflow-y: auto; margin: 20px 0; text-align: left;"></div>
+      <button class="quiz-btn" style="background: #4CAF50;" onclick="closeResults()">Back to Home</button>
+    </div>
+  </div>
+
   <script> // Starts JavaScript
+
+    // Climber image URLs
+    const climberImages = {
+      adam: "https://img.olympics.com/images/image/private/t_1-1_300/f_auto/v1707489700/primary/ryohdpaupufrjqfdbzri",
+      mejdi: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlvGqSQooH2iXwVl6e9LVLuZGhv894qRvUmA&s",
+      alex: "https://media.gq.com/photos/5a09ff16b145834e27c427e0/4:3/w_3347,h_2510,c_limit/Alex%20Honnold-1217-GQ-MORG01-01.jpg",
+      janja: "https://i0.wp.com/thehill.com/wp-content/uploads/sites/2/2024/08/66b75d8c823191.22814523.jpeg?w=2000&ssl=1",
+      magnus: "https://altitudeclimbing.com/wp-content/uploads/2025/06/retreat-kalymnos-april-2026-3-Magnus-Midtbo@2x.jpg"
+    };
 
     // Stores information about climbers
     const climbers = {
@@ -183,6 +400,247 @@
 
     };
 
+    // Quiz questions for each climber
+    const quizzes = {
+      adam: [
+        {
+          type: "text",
+          question: "Where is Adam Ondra from?",
+          answers: ["Czech Republic", "Poland", "Slovakia", "Hungary", "Germany"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What types of climbing is Adam Ondra known for?",
+          answers: ["Sport climbing and bouldering", "Free solo climbing", "Ice climbing", "Mountaineering", "Indoor climbing only"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Adam known for in his climbing style?",
+          answers: ["Intense focus and powerful style", "Taking unnecessary risks", "Rushing through climbs", "Being distracted", "Climbing alone without safety"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Did Adam Ondra compete in the Olympics?",
+          answers: ["Yes", "No", "Maybe", "Only in youth competitions", "He refused to compete"],
+          correct: 0
+        },
+        {
+          type: "picture",
+          question: "Which climber is Adam Ondra?",
+          imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
+          correct: 0
+        }
+      ],
+      mejdi: [
+        {
+          type: "text",
+          question: "Which country is Mejdi Schalck from?",
+          answers: ["France", "Germany", "Italy", "Spain", "Belgium"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Mejdi Schalck known for?",
+          answers: ["Speed and power in bouldering", "Free solo climbing", "Mountain climbing", "Ice climbing", "Rock formations study"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What special climbing move is Mejdi especially good at?",
+          answers: ["Dynamic moves with jumping", "Slow climbing", "Resting between holds", "Climbing downward", "Balance techniques"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What makes Mejdi exciting to watch during competitions?",
+          answers: ["He moves very fast and takes big risks", "He climbs slowly and carefully", "He refuses to compete", "He helps other climbers", "He uses equipment help"],
+          correct: 0
+        },
+        {
+          type: "picture",
+          question: "Which climber is Mejdi Schalck?",
+          imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
+          correct: 1
+        }
+      ],
+      alex: [
+        {
+          type: "text",
+          question: "What type of climbing is Alex Honnold most famous for?",
+          answers: ["Free solo climbing", "Bouldering", "Indoor climbing", "Mountain climbing", "Competition climbing"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Which cliff did Alex Honnold climb without ropes?",
+          answers: ["El Capitan in Yosemite", "Half Dome", "K2", "Everest", "Mont Blanc"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What movie documented Alex's El Capitan climb?",
+          answers: ["Free Solo", "Climbing High", "The Wall", "Vertical Limit", "Peak Performance"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Which building did Alex Honnold climb?",
+          answers: ["Taipei 101 in Taiwan", "Burj Khalifa", "Tokyo Tower", "CN Tower", "Empire State Building"],
+          correct: 0
+        },
+        {
+          type: "picture",
+          question: "Which climber is Alex Honnold?",
+          imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
+          correct: 2
+        }
+      ],
+      janja: [
+        {
+          type: "text",
+          question: "Which country is Janja Garnbret from?",
+          answers: ["Slovenia", "Croatia", "Bosnia", "Serbia", "Macedonia"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What Olympic achievement did Janja Garnbret accomplish?",
+          answers: ["Won a gold medal", "Won a silver medal", "Won a bronze medal", "Competed but didn't medal", "Didn't compete"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Janja known for in her climbing?",
+          answers: ["Climbing smoothly and making routes look easy", "Climbing very slowly", "Making mistakes often", "Refusing to compete", "Using safety ropes always"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What has Janja won many of?",
+          answers: ["World championships and international competitions", "Olympic medals only", "YouTube subscribers", "Magazine covers", "Social media likes"],
+          correct: 0
+        },
+        {
+          type: "picture",
+          question: "Which climber is Janja Garnbret?",
+          imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
+          correct: 3
+        }
+      ],
+      magnus: [
+        {
+          type: "text",
+          question: "Which country is Magnus Midtbø from?",
+          answers: ["Norway", "Sweden", "Denmark", "Finland", "Iceland"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What sport other than climbing is Magnus known for testing?",
+          answers: ["Various sports and athletic challenges", "Only climbing", "Only weightlifting", "Only gymnastics", "Only running"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Where is Magnus very popular today?",
+          answers: ["On YouTube", "In Olympics only", "In local gyms", "In magazines only", "In documentaries only"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What are Magnus' YouTube videos about?",
+          answers: ["Climbing, training, challenges, and adventures", "Only instructional climbing", "Only extreme sports", "Only competition results", "Only equipment reviews"],
+          correct: 0
+        },
+        {
+          type: "picture",
+          question: "Which climber is Magnus Midtbø?",
+          imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
+          correct: 4
+        }
+      ]
+    };
+
+    // Function to create and animate particles on homepage
+    function createParticles() {
+      // Create 30 particles
+      for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          
+          // Random size between 2-6px
+          const size = Math.random() * 4 + 2;
+          particle.style.width = size + "px";
+          particle.style.height = size + "px";
+          particle.style.backgroundColor = "rgba(218, 165, 32, " + (Math.random() * 0.6 + 0.4) + ")";
+          particle.style.borderRadius = "50%";
+          particle.style.left = Math.random() * window.innerWidth + "px";
+          particle.style.top = window.innerHeight + "px";
+          
+          // Random duration between 8-15 seconds
+          const duration = Math.random() * 7 + 8;
+          particle.style.animation = "float " + duration + "s linear forwards, glow 3s ease-in-out infinite";
+          particle.style.animationDelay = "0s, " + (Math.random() * 2) + "s";
+          
+          document.body.appendChild(particle);
+          
+          // Remove particle after animation ends
+          setTimeout(() => {
+            particle.remove();
+          }, duration * 1000);
+        }, i * 200);
+      }
+    }
+
+    // Function to clean up particles when entering quiz
+    function cleanupParticles() {
+      const particles = document.querySelectorAll(".particle");
+      particles.forEach(p => p.remove());
+    }
+
+    // Create initial particles on page load
+    window.addEventListener("load", () => {
+      createParticles();
+    });
+
+    // Keep creating particles continuously
+    setInterval(() => {
+      if (document.getElementById("quiz-container").style.display !== "flex" && 
+          document.getElementById("results-container").style.display !== "flex") {
+        createParticles();
+      }
+    }, 5000);
+
+    // Global quiz state
+    let currentQuiz = null;
+    let currentClimber = null;
+    let currentQuestion = 0;
+    let shuffledQuestions = [];
+    let userAnswers = [];
+    let questionData = []; // Stores shuffled answers and correct indices
+
+    // Helper function to shuffle array
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
+    // Helper function to find index of element in array
+    function findIndex(array, element) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i] === element) return i;
+      }
+      return -1;
+    }
+
     // Function that shows popup info
     function showInfo(climber) {
 
@@ -191,6 +649,9 @@
 
       // Sets popup info text
       document.getElementById("popup-text").innerText = climbers[climber].info;
+
+      // Store current climber for quiz
+      currentClimber = climber;
 
       // Makes popup visible
       document.getElementById("popup").style.display = "flex";
@@ -201,6 +662,197 @@
 
       // Hides popup
       document.getElementById("popup").style.display = "none";
+    }
+
+    // Function to start quiz
+    function startQuiz() {
+      if (!currentClimber) return;
+
+      // Shuffle questions
+      shuffledQuestions = [...quizzes[currentClimber]].sort(() => Math.random() - 0.5);
+      userAnswers = new Array(5).fill(null);
+      currentQuestion = 0;
+      questionData = [];
+
+      // Shuffle answers and track correct indices for each question
+      shuffledQuestions.forEach((question) => {
+        if (question.type === "picture") {
+          // Shuffle picture positions
+          const shuffledPositions = shuffleArray(question.imagePositions);
+          const correctPosition = question.imagePositions[question.correct];
+          const newCorrectIndex = findIndex(shuffledPositions, correctPosition);
+          
+          questionData.push({
+            shuffledPositions: shuffledPositions,
+            correctIndex: newCorrectIndex
+          });
+        } else {
+          // Shuffle text answers
+          const correctAnswer = question.answers[question.correct];
+          const shuffledAnswers = shuffleArray(question.answers);
+          const newCorrectIndex = findIndex(shuffledAnswers, correctAnswer);
+          
+          questionData.push({
+            shuffledAnswers: shuffledAnswers,
+            correctIndex: newCorrectIndex
+          });
+        }
+      });
+
+      // Clean up particles before showing quiz
+      cleanupParticles();
+
+      // Hide popup and show quiz
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("quiz-container").style.display = "flex";
+
+      // Display first question
+      displayQuestion();
+    }
+
+    // Function to display current question
+    function displayQuestion() {
+      const question = shuffledQuestions[currentQuestion];
+      document.getElementById("quiz-title").innerText = climbers[currentClimber].name + " Quiz";
+      document.getElementById("question-number").innerText = "Question " + (currentQuestion + 1) + " of 5";
+
+      if (question.type === "picture") {
+        displayPictureQuestion(question);
+      } else {
+        displayTextQuestion(question);
+      }
+    }
+
+    // Function to display text question
+    function displayTextQuestion(question) {
+      const container = document.getElementById("question-container");
+      container.innerHTML = "<h3>" + question.question + "</h3>";
+
+      const answersContainer = document.getElementById("answers-container");
+      answersContainer.innerHTML = "";
+      answersContainer.style.display = "flex";
+      answersContainer.style.flexDirection = "column";
+
+      const data = questionData[currentQuestion];
+      const shuffledAnswers = data.shuffledAnswers;
+
+      shuffledAnswers.forEach((answer, index) => {
+        const button = document.createElement("button");
+        button.className = "answer-option";
+        if (userAnswers[currentQuestion] === index) {
+          button.classList.add("selected");
+        }
+        button.innerText = answer;
+        button.onclick = () => selectAnswer(index);
+        answersContainer.appendChild(button);
+      });
+    }
+
+    // Function to display picture question
+    function displayPictureQuestion(question) {
+      const container = document.getElementById("question-container");
+      container.innerHTML = "<h3>" + question.question + "</h3>";
+
+      const answersContainer = document.getElementById("answers-container");
+      answersContainer.innerHTML = "";
+      answersContainer.style.display = "grid";
+      answersContainer.style.gridTemplateColumns = "repeat(auto-fit, minmax(120px, 1fr))";
+
+      const data = questionData[currentQuestion];
+      const shuffledPositions = data.shuffledPositions;
+
+      shuffledPositions.forEach((climberKey, index) => {
+        const div = document.createElement("div");
+        div.className = "picture-option";
+        if (userAnswers[currentQuestion] === index) {
+          div.classList.add("selected");
+        }
+        div.style.cursor = "pointer";
+        div.innerHTML = "<img src='" + climberImages[climberKey] + "' alt='" + climbers[climberKey].name + "'>";
+        div.onclick = () => selectAnswer(index);
+        answersContainer.appendChild(div);
+      });
+    }
+
+    // Function to select answer
+    function selectAnswer(index) {
+      userAnswers[currentQuestion] = index;
+
+      // Update display
+      displayQuestion();
+    }
+
+    // Function to go to next question
+    function nextQuestion() {
+      if (currentQuestion < 4) {
+        currentQuestion++;
+        displayQuestion();
+      }
+    }
+
+    // Function to go to previous question
+    function previousQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        displayQuestion();
+      }
+    }
+
+    // Function to finish quiz
+    function finishQuiz() {
+      // Calculate score
+      let score = 0;
+      for (let i = 0; i < 5; i++) {
+        if (userAnswers[i] === questionData[i].correctIndex) {
+          score++;
+        }
+      }
+
+      // Display results
+      document.getElementById("quiz-container").style.display = "none";
+      document.getElementById("results-container").style.display = "flex";
+
+      // Show score
+      document.getElementById("score-display").innerText = "You scored " + score + " out of 5!";
+
+      // Show review
+      const reviewContainer = document.getElementById("review-container");
+      reviewContainer.innerHTML = "";
+
+      for (let i = 0; i < 5; i++) {
+        const question = shuffledQuestions[i];
+        const data = questionData[i];
+        const isCorrect = userAnswers[i] === data.correctIndex;
+        const reviewItem = document.createElement("div");
+        reviewItem.className = "review-item " + (isCorrect ? "correct" : "incorrect");
+
+        let answerText = "";
+        if (question.type === "picture") {
+          const userSelectedClimber = data.shuffledPositions[userAnswers[i]] || "unknown";
+          const correctClimber = data.shuffledPositions[data.correctIndex];
+          answerText = "You selected: <strong>" + climbers[userSelectedClimber].name + "</strong><br>";
+          answerText += "Correct answer: <strong>" + climbers[correctClimber].name + "</strong>";
+        } else {
+          answerText = "You selected: <strong>" + (data.shuffledAnswers[userAnswers[i]] || "No answer") + "</strong><br>";
+          answerText += "Correct answer: <strong>" + data.shuffledAnswers[data.correctIndex] + "</strong>";
+        }
+
+        const status = isCorrect ? "✓ Correct" : "✗ Incorrect";
+        reviewItem.innerHTML = "<strong>" + (i + 1) + ". " + question.question + "</strong> - " + status + "<br>" + answerText;
+        reviewContainer.appendChild(reviewItem);
+      }
+    }
+
+    // Function to close results and go back
+    function closeResults() {
+      document.getElementById("results-container").style.display = "none";
+      document.getElementById("popup").style.display = "flex";
+      currentQuestion = 0;
+      shuffledQuestions = [];
+      userAnswers = [];
+      questionData = [];
+      // Recreate particles when returning to homepage
+      createParticles();
     }
 
   </script> <!-- Ends JavaScript -->
