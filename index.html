@@ -13,11 +13,29 @@
     body {
       margin: 0; /* Removes default page spacing */
       font-family: Arial, sans-serif; /* Sets font */
-      background: #2a2a2a; /* Dark gray background */
+      background: url('https://ychef.files.bbci.co.uk/1280x720/p0jqv2ln.jpg') center/cover no-repeat fixed; /* Climbing location background */
       color: white; /* White text */
       text-align: center; /* Centers text */
       position: relative; /* For particle positioning */
-      overflow-x: hidden; /* Prevent horizontal scroll */
+      overflow: hidden; /* Prevent scrolling */
+      height: 100vh; /* Full viewport height */
+      display: flex; /* Flexbox for centering */
+      flex-direction: column; /* Stack items vertically */
+      justify-content: center; /* Center vertically */
+      align-items: center; /* Center horizontally */
+    }
+
+    body::before {
+      content: ''; /* Creates overlay */
+      position: fixed; /* Fixed positioning */
+      top: 0; /* Top of page */
+      left: 0; /* Left of page */
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      background: url('https://ychef.files.bbci.co.uk/1280x720/p0jqv2ln.jpg') center/cover no-repeat fixed; /* Same background */
+      filter: blur(5px); /* Blur effect */
+      z-index: -1; /* Behind content */
+      pointer-events: none; /* Don't interfere with clicks */
     }
 
     /* Particle styles */
@@ -58,8 +76,13 @@
 
     /* Main title styling */
     h1 {
-      padding: 20px; /* Space around title */
-      font-size: 40px; /* Large text */
+      padding: 10px 0; /* Space around title */
+      font-size: 50px; /* Large text */
+      margin: 0; /* Remove default margin */
+      -webkit-text-stroke: 2px black; /* Text stroke outline */
+      text-stroke: 2px black; /* Text stroke outline */
+      position: relative; /* For z-index */
+      z-index: 10; /* Above blurred background */
     }
 
     /* Container for all climber cards */
@@ -67,10 +90,12 @@
       display: flex; /* Places cards in a row */
       flex-wrap: wrap; /* Moves cards to next line if needed */
       justify-content: center; /* Centers cards */
+      align-items: center; /* Vertically center items */
       gap: 20px; /* Space between cards */
-      padding: 20px; /* Space inside container */
+      padding: 10px 20px 20px 20px; /* Space inside container */
       position: relative; /* For z-index */
-      z-index: 1; /* Above particles */
+      z-index: 10; /* Above particles */
+      width: 100%; /* Full width */
     }
 
     /* Individual climber card */
@@ -143,7 +168,7 @@
       left: 0; /* Left of page */
       width: 100%; /* Full screen width */
       height: 100%; /* Full screen height */
-      background: linear-gradient(135deg, #3d3d1f 0%, #4a4a2a 100%); /* Dark gold gradient */
+      background: url('https://www.active-traveller.com/images/advice/istock-000052710440-medium.jpg') center/cover no-repeat fixed; /* Quiz background image */
       justify-content: center; /* Centers quiz horizontally */
       align-items: center; /* Centers quiz vertically */
       z-index: 1000; /* Makes sure it's on top */
@@ -156,8 +181,8 @@
       border-radius: 15px; /* Rounded corners */
       width: 80%; /* Popup width */
       max-width: 700px; /* Maximum popup width */
-      max-height: 80vh; /* Maximum height */
-      overflow-y: auto; /* Scroll if needed */
+      max-height: auto; /* Auto height to fit all content */
+      overflow-y: visible; /* No scrolling */
     }
 
     /* Quiz button */
@@ -254,8 +279,8 @@
       border-radius: 15px; /* Rounded corners */
       width: 80%; /* Width */
       max-width: 700px; /* Maximum width */
-      max-height: 80vh; /* Maximum height */
-      overflow-y: auto; /* Scroll if needed */
+      max-height: auto; /* Auto height to fit all content */
+      overflow-y: visible; /* No scrolling */
     }
 
     /* Review item */
@@ -283,7 +308,7 @@
 
 <body> <!-- Starts visible page content -->
 
-  <h1>Famous Boulder Climbers</h1> <!-- Main page heading -->
+  <h1>Climbers Quiz</h1> <!-- Main page heading -->
 
   <div class="container"> <!-- Holds all climber cards -->
 
