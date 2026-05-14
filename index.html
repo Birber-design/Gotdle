@@ -69,6 +69,8 @@
       justify-content: center; /* Centers cards */
       gap: 20px; /* Space between cards */
       padding: 20px; /* Space inside container */
+      position: relative; /* For z-index */
+      z-index: 1; /* Above particles */
     }
 
     /* Individual climber card */
@@ -109,6 +111,7 @@
       background: rgba(0,0,0,0.8); /* Dark transparent background */
       justify-content: center; /* Centers popup horizontally */
       align-items: center; /* Centers popup vertically */
+      z-index: 2000; /* Keep popup above all page elements */
     }
 
     /* Popup content box */
@@ -118,6 +121,7 @@
       border-radius: 15px; /* Rounded corners */
       width: 70%; /* Popup width */
       max-width: 600px; /* Maximum popup width */
+      z-index: 2001; /* Keep content above background */
     }
 
     /* Close button */
@@ -321,6 +325,7 @@
     <div class="popup-content"> <!-- Popup box -->
 
       <h2 id="popup-title"></h2> <!-- Title filled by JavaScript -->
+      <img id="popup-image" style="width: 100%; max-width: 360px; height: auto; object-fit: cover; border-radius: 15px; margin: 15px auto; display: block;">
 
       <p id="popup-text"></p> <!-- Info text filled by JavaScript -->
 
@@ -428,6 +433,42 @@
           correct: 0
         },
         {
+          type: "text",
+          question: "What is Adam considered by many people?",
+          answers: ["One of the best all-around climbers in history", "Just a beginner", "Only good at one type of climbing", "Not very dedicated", "Only famous for competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What has Adam pushed in climbing?",
+          answers: ["The limits of what is possible in climbing", "Only easy routes", "Safety regulations", "Competition rules", "Climbing equipment"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "How does Adam look when he climbs?",
+          answers: ["Very serious, thinking carefully about every move", "Distracted and unfocused", "Rushing and careless", "Smiling and joking", "Bored and uninterested"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What has Adam completed that almost nobody else has?",
+          answers: ["Some of the most difficult rock routes ever created", "Only easy beginner routes", "No notable climbs", "Only indoor climbs", "Only competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What does Adam continue to do despite being at the top level?",
+          answers: ["Train hard and try new challenges", "Retire from climbing", "Only compete occasionally", "Stop training", "Focus only on easy climbs"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Why do many young climbers look up to Adam?",
+          answers: ["Because of his dedication, strength, and love for the sport", "Because he takes it easy", "Because he avoids challenges", "Because he doesn't train hard", "Because he only cares about fame"],
+          correct: 0
+        },
+        {
           type: "picture",
           question: "Which climber is Adam Ondra?",
           imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
@@ -457,6 +498,42 @@
           type: "text",
           question: "What makes Mejdi exciting to watch during competitions?",
           answers: ["He moves very fast and takes big risks", "He climbs slowly and carefully", "He refuses to compete", "He helps other climbers", "He uses equipment help"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What type of climbing did Mejdi become famous in?",
+          answers: ["Competition bouldering", "Free solo climbing", "Ice climbing", "Mountain climbing", "Indoor climbing"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "How does Mejdi solve difficult climbing problems?",
+          answers: ["Quickly", "Slowly over time", "With help from others", "By avoiding them", "Only with equipment"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Mejdi considered?",
+          answers: ["One of the strongest young climbers in the world", "A beginner climber", "Only good at easy routes", "Not competitive", "Only famous for videos"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What has Mejdi competed against?",
+          answers: ["Many top athletes in international climbing competitions", "Only local climbers", "No competitions", "Only youth competitions", "Only himself"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What makes Mejdi exciting to watch besides his speed?",
+          answers: ["His energy and confidence", "His slow pace", "His lack of confidence", "His avoidance of risks", "His use of safety equipment"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Mejdi becoming in modern climbing?",
+          answers: ["One of the rising stars in modern climbing and bouldering", "A retired climber", "Only a coach", "Not well known", "Only good at one style"],
           correct: 0
         },
         {
@@ -492,6 +569,48 @@
           correct: 0
         },
         {
+          type: "text",
+          question: "What does free solo climbing mean?",
+          answers: ["Climbing without ropes or safety equipment", "Climbing with a partner", "Climbing indoors", "Climbing mountains", "Climbing competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What was shown in the movie Free Solo?",
+          answers: ["Alex's El Capitan climb", "A different climber's story", "Mountain climbing", "Indoor bouldering", "Competition highlights"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Why did the movie Free Solo become popular?",
+          answers: ["People were shocked by how dangerous the climb was", "It was about easy climbing", "It showed safe techniques", "It was a comedy", "It focused on equipment"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "How is Alex known for staying during climbs?",
+          answers: ["Very calm and focused even in scary situations", "Panicked and unfocused", "Distracted by surroundings", "Rushing through moves", "Avoiding high places"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What do many people say Alex has?",
+          answers: ["Almost no fear", "Too much fear", "Average fear levels", "Fear of heights", "Fear of climbing"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What does Alex do besides climbing?",
+          answers: ["Helps charities and raises awareness about environmental issues", "Only climbs", "Only competes", "Only trains", "Only watches movies"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Why do climbers admire Alex?",
+          answers: ["Because of his strength, balance, smart climbing skills, and bravery", "Because he avoids risks", "Because he uses lots of safety gear", "Because he climbs slowly", "Because he doesn't train hard"],
+          correct: 0
+        },
+        {
           type: "picture",
           question: "Which climber is Alex Honnold?",
           imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
@@ -524,6 +643,48 @@
           correct: 0
         },
         {
+          type: "text",
+          question: "What is Janja considered?",
+          answers: ["One of the best female climbers in the world", "A beginner climber", "Only good at one style", "Not competitive", "Only famous for looks"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Janja especially known for?",
+          answers: ["Competition climbing and bouldering", "Free solo climbing", "Mountain climbing", "Ice climbing", "Indoor climbing only"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What makes Janja one of the biggest stars in climbing history?",
+          answers: ["Won a gold medal in the Olympics", "Won many YouTube awards", "Became famous for videos", "Only competed locally", "Avoided major competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Janja known for besides her climbing skills?",
+          answers: ["Strong mindset, confidence, and hard work during training", "Avoiding training", "Taking it easy", "Not being dedicated", "Only focusing on competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "How does Janja stay during extremely difficult climbs?",
+          answers: ["Calm and focused", "Panicked and unfocused", "Distracted", "Rushing", "Giving up easily"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Who has Janja inspired?",
+          answers: ["Many young climbers around the world, especially girls", "Only professional climbers", "No one", "Only boys", "Only adults"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What does Janja enjoy besides competitions?",
+          answers: ["Outdoor climbing", "Only indoor climbing", "Only watching others", "Only training", "Only resting"],
+          correct: 0
+        },
+        {
           type: "picture",
           question: "Which climber is Janja Garnbret?",
           imagePositions: ["adam", "mejdi", "alex", "janja", "magnus"],
@@ -553,6 +714,54 @@
           type: "text",
           question: "What are Magnus' YouTube videos about?",
           answers: ["Climbing, training, challenges, and adventures", "Only instructional climbing", "Only extreme sports", "Only competition results", "Only equipment reviews"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Magnus known for besides climbing?",
+          answers: ["Incredible strength, powerful climbing style, and fun personality", "Weak strength", "Slow style", "Serious personality", "Avoiding challenges"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "When did Magnus start climbing?",
+          answers: ["When he was young", "As an adult", "Recently", "Never started", "Only in competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What became Magnus later in his career?",
+          answers: ["One of the best competitive climbers in Europe", "A beginner", "Only good locally", "Not competitive", "Retired early"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Magnus respected for?",
+          answers: ["His strong grip and athletic skills", "His slow pace", "His lack of strength", "His avoidance of training", "His focus on videos only"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "Why do people enjoy watching Magnus' videos?",
+          answers: ["They are exciting, funny, and show how difficult climbing can be", "They are boring", "They are too serious", "They avoid showing difficulty", "They are only about equipment"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What is Magnus known for trying?",
+          answers: ["Crazy climbing challenges", "Only easy challenges", "No challenges", "Only safe activities", "Only competitions"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What has Magnus inspired people to do?",
+          answers: ["Start climbing and stay active", "Stop climbing", "Avoid activity", "Only watch videos", "Only compete"],
+          correct: 0
+        },
+        {
+          type: "text",
+          question: "What continues Magnus to be even after leaving competitions?",
+          answers: ["One of the most famous climbers on the internet", "Unknown", "Only locally famous", "Retired completely", "Only a coach"],
           correct: 0
         },
         {
@@ -647,6 +856,10 @@
       // Sets popup title text
       document.getElementById("popup-title").innerText = climbers[climber].name;
 
+      // Sets popup image
+      document.getElementById("popup-image").src = climberImages[climber];
+      document.getElementById("popup-image").alt = climbers[climber].name;
+
       // Sets popup info text
       document.getElementById("popup-text").innerText = climbers[climber].info;
 
@@ -668,9 +881,9 @@
     function startQuiz() {
       if (!currentClimber) return;
 
-      // Shuffle questions
-      shuffledQuestions = [...quizzes[currentClimber]].sort(() => Math.random() - 0.5);
-      userAnswers = new Array(5).fill(null);
+      // Shuffle questions and select 5
+      shuffledQuestions = [...quizzes[currentClimber]].sort(() => Math.random() - 0.5).slice(0, 5);
+      userAnswers = new Array(shuffledQuestions.length).fill(null);
       currentQuestion = 0;
       questionData = [];
 
@@ -714,7 +927,7 @@
     function displayQuestion() {
       const question = shuffledQuestions[currentQuestion];
       document.getElementById("quiz-title").innerText = climbers[currentClimber].name + " Quiz";
-      document.getElementById("question-number").innerText = "Question " + (currentQuestion + 1) + " of 5";
+      document.getElementById("question-number").innerText = "Question " + (currentQuestion + 1) + " of " + shuffledQuestions.length;
 
       if (question.type === "picture") {
         displayPictureQuestion(question);
@@ -784,7 +997,7 @@
 
     // Function to go to next question
     function nextQuestion() {
-      if (currentQuestion < 4) {
+      if (currentQuestion < shuffledQuestions.length - 1) {
         currentQuestion++;
         displayQuestion();
       }
@@ -802,7 +1015,7 @@
     function finishQuiz() {
       // Calculate score
       let score = 0;
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < shuffledQuestions.length; i++) {
         if (userAnswers[i] === questionData[i].correctIndex) {
           score++;
         }
@@ -813,13 +1026,13 @@
       document.getElementById("results-container").style.display = "flex";
 
       // Show score
-      document.getElementById("score-display").innerText = "You scored " + score + " out of 5!";
+      document.getElementById("score-display").innerText = "You scored " + score + " out of " + shuffledQuestions.length + "!";
 
       // Show review
       const reviewContainer = document.getElementById("review-container");
       reviewContainer.innerHTML = "";
 
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i < shuffledQuestions.length; i++) {
         const question = shuffledQuestions[i];
         const data = questionData[i];
         const isCorrect = userAnswers[i] === data.correctIndex;
